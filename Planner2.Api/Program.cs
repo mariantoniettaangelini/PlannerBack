@@ -12,7 +12,7 @@ builder.Services.AddDbContext<PlannerContext>(options =>
     options.UseMySQL(builder.Configuration.GetConnectionString("Database")));
 
 builder.Services.AddTransient<IUserRepo, UserRepo>();
-//builder.Services.AddTransient<IUserCredentialsRepo, UserCredentialsRepo>();
+builder.Services.AddTransient<IExerciseRepo,ExerciseRepo>();
 
 var app = builder.Build();
 
