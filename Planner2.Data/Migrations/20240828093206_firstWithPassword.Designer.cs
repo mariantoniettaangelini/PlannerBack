@@ -11,8 +11,8 @@ using Planner2.Data.DataContext;
 namespace Planner2.Data.Migrations
 {
     [DbContext(typeof(PlannerContext))]
-    [Migration("20240827191103_first")]
-    partial class first
+    [Migration("20240828093206_firstWithPassword")]
+    partial class firstWithPassword
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,6 +55,11 @@ namespace Planner2.Data.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");

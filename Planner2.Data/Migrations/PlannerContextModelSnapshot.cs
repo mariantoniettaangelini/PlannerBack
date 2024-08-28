@@ -56,6 +56,11 @@ namespace Planner2.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
                     b.Property<decimal>("Weight")
                         .HasColumnType("decimal(18,2)");
 

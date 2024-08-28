@@ -15,6 +15,9 @@ public class Users
     [Required, MaxLength(100)]
     public string Email { get; set; }
 
+    [Required, MaxLength(100)]
+    public string Password { get; set; }
+
     [Required]
     public DateTime BirthDate { get; set; }
 
@@ -30,5 +33,4 @@ public class Users
     [MaxLength(255)]
     public string Goals { get; set; }
 
-    //public UserCredentials UserCredentials { get; set; }
 }
