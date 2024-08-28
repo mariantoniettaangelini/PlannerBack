@@ -16,27 +16,27 @@ namespace Planner2.Data.Repo
         {
             _ctx = ctx;
         }
-        public async Task<IEnumerable<User>> GetUsersAsync()
+        public async Task<IEnumerable<Users>> GetUsersAsync()
         {
             var users = await _ctx.Users.ToListAsync();
             return users;
         }
-        public async Task<User> GetUsersByIdAsync(int id)
+        public async Task<Users> GetUsersByIdAsync(int id)
         {
             return await _ctx.Users.FindAsync(id);
         }
-        public async Task<User> CreateUserAsync(User user)
+        public async Task<Users> CreateUserAsync(Users user)
         {
             _ctx.Users.Add(user);
             await _ctx.SaveChangesAsync();
             return user;
         }
-        public async Task UpdateUserAsync(User user)
+        public async Task UpdateUserAsync(Users user)
         {
             _ctx.Users.Update(user);
             await _ctx.SaveChangesAsync();
         }
-        public async Task DeleteUserAsync(User user)
+        public async Task DeleteUserAsync(Users user)
         {
             _ctx.Users.Remove(user);
             await _ctx.SaveChangesAsync();

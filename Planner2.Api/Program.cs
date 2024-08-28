@@ -1,16 +1,18 @@
+using Microsoft.EntityFrameworkCore;
 using Planner2.Data.DataContext;
 using Planner2.Data.Repo;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddTransient<PlannerContext>();
+builder.Services.AddDbContext<PlannerContext>(options =>
+    options.UseMySQL(builder.Configuration.GetConnectionString("Database")));
+
 builder.Services.AddTransient<IUserRepo, UserRepo>();
+//builder.Services.AddTransient<IUserCredentialsRepo, UserCredentialsRepo>();
 
 var app = builder.Build();
 
@@ -22,9 +24,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

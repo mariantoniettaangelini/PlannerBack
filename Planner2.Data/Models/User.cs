@@ -3,18 +3,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Planner2.Data.Models;
 
-[Table("User")]
-public class User
+[Table("Users")]
+public class Users
 {
     [Key]
     public int Id { get; set; }
 
-    [Required]
-    [MaxLength(100)]
+    [Required, MaxLength(100)]
     public string Name { get; set; }
 
-    [Required]
-    [MaxLength(100)]
+    [Required, MaxLength(100)]
     public string Email { get; set; }
 
     [Required]
@@ -32,5 +30,5 @@ public class User
     [MaxLength(255)]
     public string Goals { get; set; }
 
-    public virtual UserCredentials UserCredentials { get; set; }
+    //public UserCredentials UserCredentials { get; set; }
 }

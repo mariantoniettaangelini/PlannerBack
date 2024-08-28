@@ -19,7 +19,7 @@ namespace Planner2.Data.Migrations
                 .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("Planner2.Data.Models.User", b =>
+            modelBuilder.Entity("Planner2.Data.Models.Users", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -61,51 +61,7 @@ namespace Planner2.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
-                });
-
-            modelBuilder.Entity("Planner2.Data.Models.UserCredentials", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("UserCredentials");
-                });
-
-            modelBuilder.Entity("Planner2.Data.Models.UserCredentials", b =>
-                {
-                    b.HasOne("Planner2.Data.Models.User", "User")
-                        .WithOne("UserCredentials")
-                        .HasForeignKey("Planner2.Data.Models.UserCredentials", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Planner2.Data.Models.User", b =>
-                {
-                    b.Navigation("UserCredentials")
-                        .IsRequired();
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

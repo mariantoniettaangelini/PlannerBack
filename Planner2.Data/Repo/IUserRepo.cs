@@ -4,10 +4,10 @@ namespace Planner2.Data.Repo
 {
     public interface IUserRepo
     {
-        Task<User> CreateUserAsync(User user);
-        Task DeleteUserAsync(User user);
-        Task<IEnumerable<User>> GetUsersAsync();
-        Task<User> GetUsersByIdAsync(int id);
-        Task UpdateUserAsync(User user);
+        Task<Users> CreateUserAsync(Users user);
+        Task DeleteUserAsync(Users user);
+        Task<IEnumerable<Users>> GetUsersAsync();
+        Task<Users> GetUsersByIdAsync(int id);
+        Task UpdateUserAsync(Users user);
     }
 }

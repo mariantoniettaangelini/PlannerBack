@@ -1,22 +1,24 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Planner2.Data.Models;
 
 namespace Planner2.Data.DataContext;
 
 public class PlannerContext : DbContext
 {
-    private readonly IConfiguration _configuration;
-    private readonly string _connectionString;
-    public PlannerContext(IConfiguration configuration)
+    public PlannerContext(DbContextOptions<PlannerContext> options) : base(options)
     {
-        _configuration = configuration;
-        _connectionString = _configuration.GetConnectionString("Database");
     }
-    public DbSet<User> Users { get; set; }
-    public DbSet<UserCredentials> UserCredentials { get; set; }
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+    public DbSet<Users> Users { get; set; }
+    //public DbSet<UserCredentials> UserCredentials { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        optionsBuilder.UseMySQL(_connectionString);
+        base.OnModelCreating(modelBuilder);
+
+        //modelBuilder.Entity<User>()
+        //    .HasOne(u => u.UserCredentials)
+        //    .WithOne(uc => uc.User)
+        //    .HasForeignKey<UserCredentials>(uc => uc.UserId);
     }
 }

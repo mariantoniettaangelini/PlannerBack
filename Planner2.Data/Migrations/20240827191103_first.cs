@@ -12,11 +12,11 @@ namespace Planner2.Data.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterDatabase()
-                .Annotation("MySQL:Charset", "utf8mb4");
+            migrationBuilder.DropTable(
+                name: "User");
 
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Users",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -32,7 +32,7 @@ namespace Planner2.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.Id);
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
         }
@@ -41,7 +41,28 @@ namespace Planner2.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Users");
+
+            migrationBuilder.CreateTable(
+                name: "User",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    BirthDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    Email = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    ExperienceLevel = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    Gender = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false),
+                    Goals = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false),
+                    Height = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    Weight = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.Id);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
         }
     }
 }

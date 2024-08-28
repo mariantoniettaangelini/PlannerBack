@@ -18,7 +18,7 @@ namespace Planner2.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddUser(User user)
+        public async Task<IActionResult> AddUser(Users user)
         {
             try
             {
@@ -33,7 +33,7 @@ namespace Planner2.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateUser(User userToUpdate)
+        public async Task<IActionResult> UpdateUser(Users userToUpdate)
         {
             try
             {
